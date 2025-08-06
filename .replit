@@ -1,0 +1,22 @@
+run = "pip install -r requirements.txt && python bot.py"
+entrypoint = "main.py"
+language = "python3"
+
+[languages.python3]
+pattern = "**/*.py"
+syntax = "python"
+entrypoint = "bot.py"
+
+[languages.python3.languageServer]
+start = ["pylsp"]
+
+[nix]
+channel = "stable-22_11"
+
+[deployment]
+run = ["sh", "-c", "python bot.py"]
+deploymentTarget = "cloudrun"
+
+[auth]
+pageEnabled = false
+buttonEnabled = false
