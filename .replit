@@ -1,5 +1,25 @@
-run = "pip install -r requirements.txt && python bot.py"
-entrypoint = "main.py"
+run = "python bot.py"
+entrypoint = "bot.py"
+language = "python3"
+
+hidden = [".pyc", "__pycache__", ".env"]
+
+[nix]
+channel = "stable-23_05"
+
+[env]
+PYTHONPATH = "${PYTHONPATH}:${REPL_HOME}"
+
+[packager]
+language = "python3"
+ignoredPackages = ["discord.py"]
+
+[packager.features]
+enabledForHosting = true
+packageSearch = true
+guessImports = true
+
+[unitTest]
 language = "python3"
 
 [languages.python3]
@@ -10,11 +30,8 @@ entrypoint = "bot.py"
 [languages.python3.languageServer]
 start = ["pylsp"]
 
-[nix]
-channel = "stable-22_11"
-
 [deployment]
-run = ["sh", "-c", "python bot.py"]
+run = ["python3", "bot.py"]
 deploymentTarget = "cloudrun"
 
 [auth]
