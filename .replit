@@ -8,6 +8,7 @@ hidden = [".pyc", "__pycache__", ".env"]
 channel = "stable-23_05"
 
 [env]
+PATH = "${PATH}:${REPL_HOME}/.local/bin"
 PYTHONPATH = "${PYTHONPATH}:${REPL_HOME}"
 
 [packager]
